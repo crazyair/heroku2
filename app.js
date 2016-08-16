@@ -5,26 +5,36 @@ var superagent = require('superagent');
 var app = express();
 
 app.get('/', function (req, res, next) {
-  superagent.get('https://cnodejs.org/')
-    .end(function (err, sres) {
-      if (err) {
-        return next(err);
-      }
-      var $ = cheerio.load(sres.text);
-      var items = [];
-      $('#topic_list .topic_title').each(function (idx, element) {
-        var $element = $(element);
-        items.push({
-          title: $element.attr('title'),
-          href: $element.attr('href')
+    superagent.get('https://cnodejs.org/')
+        .end(function (err, sres) {
+            if (err) {
+                return next(err);
+            }
+            var $ = cheerio.load(sres.text);
+            var items = [];
+            //   $('#topic_list .topic_title').each(function (idx, element) {
+            //     var $element = $(element);
+            //     items.push({
+            //       title: $element.attr('title'),
+            //       href: $element.attr('href')
+            //     });
+            //   });
+            
+            $('#topic_list .cell').each(function (idx, element) {
+                var $element = $(element).children('.topic_title');
+                items.push({
+                    title: $element.attr('title'),
+                    href: $element.attr('href')
+                });
+            });
+
+
+            res.send(items);
         });
-      });
-      res.send(items);
-    });
 });
 
 
 
 app.listen(process.env.PORT || 3000, function () {
-    console.log(645381995,process.env.PORT);
+    console.log(645381995, process.env.PORT);
 })
