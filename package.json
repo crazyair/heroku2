@@ -1,0 +1,24 @@
+{
+  "name": "heroku2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qq645381995/heroku2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qq645381995/heroku2/issues"
+  },
+  "homepage": "https://github.com/qq645381995/heroku2#readme",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "express": "^4.14.0",
+    "superagent": "^2.2.0"
+  }
+}
