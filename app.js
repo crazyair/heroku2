@@ -21,10 +21,12 @@ app.get('/', function (req, res, next) {
             //   });
             
             $('#topic_list .cell').each(function (idx, element) {
-                var $element = $(element).children('.topic_title');
+                var $element = $(element).find('.topic_title');
+                var $element2 = $(element).find('.last_active_time');
                 items.push({
                     title: $element.attr('title'),
-                    href: $element.attr('href')
+                    href: $element.attr('href'),
+                    text: $element2.text()
                 });
             });
 
